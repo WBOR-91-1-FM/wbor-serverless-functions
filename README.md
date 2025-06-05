@@ -17,3 +17,5 @@ Imposed limits:
   - The maximum build time for remote builds is 2 minutes.
   - Memory is limited from 128 MB – 1 GB, defaulting to 256 MB.
 - Does not support PostgreSQL connection pools.
+
+Note about activation logs: the only work for manually activated functions. For web activated functions, the activation logs are not available.
