@@ -21,9 +21,12 @@ packages:
         # Function-level scope
         # parameters:
         #   packageParam: "packageValue"
-        environment:
-          DISCORD_URL: $DISCORD_URL
-          GITHUB_WEBHOOK_SECRET: $GITHUB_WEBHOOK_SECRET
+
+        # NOTE: these need to be set in the console for now as I am unable to get them to work
+        # by passing them here from the CLI
+        # environment:
+        #   DISCORD_URL: $DISCORD_URL
+        #   GITHUB_WEBHOOK_SECRET: $GITHUB_WEBHOOK_SECRET
         limits:
           timeout: 15000 # milliseconds (15 seconds)
           memory: 256 # megabytes
