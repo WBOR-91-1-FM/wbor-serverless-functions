@@ -215,7 +215,7 @@ def main(
         # verify_signature already prints detailed errors
         return {
             "statusCode": 403,  # Forbidden
-            "body": json.dumps({"error": "Invalid GitHub webhook signature."}),
+            "body": json.dumps({"error": "Invalid GitHub webhook signature"}),
         }
 
     # If signature is valid, parse the JSON payload
