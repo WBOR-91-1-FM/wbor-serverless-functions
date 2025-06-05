@@ -4,14 +4,14 @@
     "namespace": "fn-823ce971-f591-4605-8b88-3c778ce14017",
     "packageVersions": {
       "wbor-studio-dashboard": {
-        "version": "0.0.13",
+        "version": "0.0.14",
         "digest": "41729f0be5416e4a3fcf260bb4d8271f0272ae1506fb6918ce0ff1b1b2a8bf9e"
       }
     },
     "actionVersions": {
       "wbor-studio-dashboard/ci-notify": {
-        "version": "0.0.18",
-        "digest": "6a0aa6647e914a3c8cbfd9ec6f6a73c97a897e4b5d2ea1180528f967c6c89f99"
+        "version": "0.0.20",
+        "digest": "01f18bf1922c9276a32848933968def72b5ff1b339bcc60adc87c9e4eaf4900e"
       }
     }
   }
