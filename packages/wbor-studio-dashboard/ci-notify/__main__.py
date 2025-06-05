@@ -1,6 +1,12 @@
 """
 Serverless function to notify Discord on GitHub CI failures.
 
+Provided packages:
+https://docs.digitalocean.com/products/functions/reference/runtimes/python/#python-311-runtime
+
+If needing to add non-provided packages, use a requirements.txt file following
+/#add-packages-with-a-virtual-environment
+
 Author:
 - Mason Daugherty <@mdrxy>
 """
@@ -73,7 +79,7 @@ def verify_signature(request_headers: dict, request_body_raw: str, secret: str) 
 
 
 def main(
-    args: dict,
+    event: dict, context: object = None
 ) -> (
     dict
 ):  # pylint: disable=too-many-locals, too-many-statements, too-many-return-statements, too-many-branches
@@ -82,12 +88,20 @@ def main(
     Receives GitHub webhook events and notifies Discord on CI failures.
 
     Parameters:
-    - args (dict): The arguments passed to the function, including
-        headers and raw body.
+    - event (dict): The event data containing headers and raw body.
+    - context (object): The context object containing function metadata.
+        The object has one method: get_remaining_time_in_millis(),
+        which returns the remaining time in milliseconds for the
+        function execution.
 
     Returns:
-    - dict: A response object with status code and body.
+    - dict: A response object with status code and body. Digital Ocean
+        Functions must return a dictionary or nothing at all.
+        https://docs.digitalocean.com/products/functions/reference/runtimes/python/#returns
     """
+    version = context.function_version  # type: ignore
+    print(f"Function version: {version}")
+
     if not DISCORD_URL:
         print("Error: DISCORD_URL environment variable not set.")
         return {
@@ -107,8 +121,8 @@ def main(
     # Extract headers and raw body for signature verification
     # For DigitalOcean Functions configured as "raw HTTP", headers are in '__ow_headers'
     # and the raw request body is in '__ow_body'.
-    headers = args.get("__ow_headers", {})
-    raw_body = args.get("__ow_body")
+    headers = event.get("__ow_headers", {})
+    raw_body = event.get("__ow_body")
 
     if raw_body is None:  # Check if __ow_body was provided
         print(
