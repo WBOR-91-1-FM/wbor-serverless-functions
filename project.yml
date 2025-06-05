@@ -1,0 +1,31 @@
+# project.yml
+targetNamespace: "fn-823ce971-f591-4605-8b88-3c778ce14017"
+
+# Project-level scope
+# parameters:
+#   globalParam: "globalValue"
+# environment:
+#   GLOBAL_ENV: "project_wide_value"
+
+packages:
+  - name: "wbor-studio-dashboard"
+
+    # Package-level scope
+    # parameters:
+    #   packageParam: "packageValue"
+    # environment:
+    #   PACKAGE_ENV: "package_specific_value"
+
+    functions:
+      - name: "ci-notify"
+        # Function-level scope
+        # parameters:
+        #   packageParam: "packageValue"
+        environment:
+          DISCORD_URL: $DISCORD_URL
+          GITHUB_WEBHOOK_SECRET: $GITHUB_WEBHOOK_SECRET
+        limits:
+          timeout: 15000 # milliseconds (15 seconds)
+          memory: 256 # megabytes
+        web: raw # Set to 'raw' for raw HTTP handling
+        runtime: "python:3.11"
