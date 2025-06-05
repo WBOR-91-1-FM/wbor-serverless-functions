@@ -1,0 +1,11 @@
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# DigitalOcean specific (if any local config files are generated)
+.do/
