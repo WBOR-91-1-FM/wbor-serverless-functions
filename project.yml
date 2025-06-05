@@ -29,3 +29,4 @@ packages:
           memory: 256 # megabytes
         web: raw # Set to 'raw' for raw HTTP handling
         runtime: "python:3.11"
+        main: "main"
